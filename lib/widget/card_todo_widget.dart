@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables, avoid_unnecessary_containers
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -47,7 +49,7 @@ class _TaskListViewState extends State<TaskListView> {
                     break;
                 }
                 return Container(
-                  margin: EdgeInsets.symmetric(vertical: 5),
+                  margin: const EdgeInsets.symmetric(vertical: 5),
                   width: double.infinity,
                   height: 120,
                   decoration: BoxDecoration(
@@ -59,7 +61,7 @@ class _TaskListViewState extends State<TaskListView> {
                       Container(
                         decoration: BoxDecoration(
                           color: categoryColor,
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(12),
                             bottomLeft: Radius.circular(12),
                           ),
@@ -68,7 +70,7 @@ class _TaskListViewState extends State<TaskListView> {
                       ),
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             horizontal: 20,
                           ),
                           child: Column(
@@ -78,7 +80,7 @@ class _TaskListViewState extends State<TaskListView> {
                               ListTile(
                                 contentPadding: EdgeInsets.zero,
                                 leading: IconButton(
-                                  icon: Icon(
+                                  icon: const Icon(
                                     CupertinoIcons.delete,
                                   ),
                                   onPressed: () async {
@@ -116,7 +118,7 @@ class _TaskListViewState extends State<TaskListView> {
                                   child: Checkbox(
                                       activeColor: Colors.blue.shade800,
                                       value: snapshot.data![index].isDone,
-                                      shape: CircleBorder(),
+                                      shape: const CircleBorder(),
                                       onChanged: (value) {
                                         taskRepo.updateTask(
                                           userid: widget.userid,
@@ -128,7 +130,7 @@ class _TaskListViewState extends State<TaskListView> {
                                 ),
                               ),
                               Transform.translate(
-                                offset: Offset(0, -12),
+                                offset: const Offset(0, -12),
                                 child: Container(
                                   child: Column(
                                     children: [
@@ -139,7 +141,7 @@ class _TaskListViewState extends State<TaskListView> {
                                       Row(
                                         children: [
                                           Text(snapshot.data![index].dateTask),
-                                          Gap(12),
+                                          const Gap(12),
                                           Text(snapshot.data![index].timeTask),
                                         ],
                                       ),
@@ -157,7 +159,7 @@ class _TaskListViewState extends State<TaskListView> {
               },
             );
           } else if (!snapshot.hasData) {
-            return Center(
+            return const Center(
               child: Text("No Data!"),
             );
           } else if (snapshot.hasError) {
@@ -165,12 +167,12 @@ class _TaskListViewState extends State<TaskListView> {
               child: Text(snapshot.error.toString()),
             );
           } else {
-            return Center(
+            return const Center(
               child: Text("Something went Wrong"),
             );
           }
         } else {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         }

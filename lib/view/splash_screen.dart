@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, await_only_futures, use_build_context_synchronously
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:to_do_riverpod/constants/firebase_consts.dart';
@@ -35,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        children: const [
           Text("Hello, Welcome to TaskTrek"),
           SizedBox(
             height: 15,

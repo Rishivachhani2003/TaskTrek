@@ -39,17 +39,17 @@ class _LoginViewState extends State<LoginView> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 "Welcome to the Notes App",
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 24,
                     fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               TextField(
@@ -60,18 +60,18 @@ class _LoginViewState extends State<LoginView> {
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.blueGrey),
+                    borderSide: const BorderSide(color: Colors.blueGrey),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: Colors.black),
                   ),
                   border: InputBorder.none,
-                  label: Text("Email"),
-                  labelStyle: TextStyle(color: Colors.black),
+                  label: const Text("Email"),
+                  labelStyle: const TextStyle(color: Colors.black),
                   hintText: "Enter your Email",
-                  hintStyle: TextStyle(color: Colors.grey),
-                  prefixIcon: Icon(
+                  hintStyle: const TextStyle(color: Colors.grey),
+                  prefixIcon: const Icon(
                     Icons.email,
                     color: Colors.grey,
                   ),
@@ -79,7 +79,7 @@ class _LoginViewState extends State<LoginView> {
                   fillColor: Colors.white,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextField(
@@ -90,19 +90,19 @@ class _LoginViewState extends State<LoginView> {
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey),
+                    borderSide: const BorderSide(color: Colors.grey),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: Colors.black),
                   ),
                   border: InputBorder.none,
-                  label: Text("Password"),
-                  labelStyle: TextStyle(color: Colors.black),
+                  label: const Text("Password"),
+                  labelStyle: const TextStyle(color: Colors.black),
                   hintText: "Enter your Password",
-                  hintStyle: TextStyle(color: Colors.grey),
+                  hintStyle: const TextStyle(color: Colors.grey),
                   prefixIcon:
-                      Icon(Icons.lock, color: Colors.grey), // Add prefix icon
+                      const Icon(Icons.lock, color: Colors.grey), // Add prefix icon
                   suffixIcon: IconButton(
                     onPressed: () {
                       setState(() {
@@ -118,7 +118,7 @@ class _LoginViewState extends State<LoginView> {
                   fillColor: Colors.white,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Center(
@@ -145,8 +145,9 @@ class _LoginViewState extends State<LoginView> {
                           pass.text,
                         );
                         if (await isPass) {
-                          Future.delayed(Duration(seconds: 2));
+                          Future.delayed(const Duration(seconds: 2));
                           Fluttertoast.showToast(msg: "Login Successfully");
+                          // ignore: use_build_context_synchronously
                           Navigator.push(context,
                               MaterialPageRoute(builder: (c) => MyHomePage()));
                           email.clear();
@@ -169,8 +170,8 @@ class _LoginViewState extends State<LoginView> {
                     backgroundColor: MaterialStateProperty.all<Color>(
                         Colors.black), // Set background color to blue
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(
+                  child: const Padding(
+                    padding: EdgeInsets.all(
                         0.0), // Add some padding for better visibility
                     child: Text(
                       'Login', // Add the text "Login"
@@ -183,16 +184,16 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Center(
                   child: TextButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (c) => RegisterView()));
+                      MaterialPageRoute(builder: (c) => const RegisterView()));
                 },
-                child: Text(
+                child: const Text(
                   'Not registered yet? Register Here!',
                   style: TextStyle(color: Colors.black),
                 ),

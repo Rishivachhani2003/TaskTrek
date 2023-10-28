@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, body_might_complete_normally_nullable
+// ignore_for_file: prefer_const_constructors, body_might_complete_normally_nullable, avoid_returning_null_for_void
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
