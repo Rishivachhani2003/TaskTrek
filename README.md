@@ -1,4 +1,4 @@
-# to_do_riverpod
+TaskTrek
 
 A new Flutter project.
 
