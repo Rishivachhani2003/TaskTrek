@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, body_might_complete_normally_nullable, avoid_returning_null_for_void
+// ignore_for_file: prefer_const_constructors, body_might_complete_normally_nullable
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -47,6 +47,15 @@ class AuthenticationRepository extends GetxController {
       return false;
     }
     return true;
+  }
+
+  Future<void> passwordReset(String email) async {
+    try {
+      await auth.sendPasswordResetEmail(email: email);
+      Fluttertoast.showToast(msg: "Mail Sent to your Email Id");
+    } catch (e) {
+      Fluttertoast.showToast(msg: e.toString());
+    }
   }
 
   Future<void> logout() async {

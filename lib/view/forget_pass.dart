@@ -4,18 +4,16 @@ import 'package:get/get.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:to_do_riverpod/controller/auth_repository.dart';
 import 'package:to_do_riverpod/controller/login_controller.dart';
-import 'package:to_do_riverpod/view/home_page.dart';
-import 'package:to_do_riverpod/view/register_view.dart';
+import 'package:to_do_riverpod/view/login_view.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+class ForgetPassView extends StatefulWidget {
+  const ForgetPassView({Key? key}) : super(key: key);
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<ForgetPassView> createState() => _ForgetPassViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
-  bool _showPassword = false;
+class _ForgetPassViewState extends State<ForgetPassView> {
   final controller = Get.put(LoginController());
   final authrepo = Get.put(AuthenticationRepository());
 
@@ -43,7 +41,7 @@ class _LoginViewState extends State<LoginView> {
                 height: 20,
               ),
               Text(
-                "Welcome to the Notes App",
+                "Reset Password",
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 24,
@@ -79,81 +77,21 @@ class _LoginViewState extends State<LoginView> {
                   fillColor: Colors.white,
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
-              TextField(
-                controller: controller.password,
-                obscureText: !_showPassword,
-                enableSuggestions: false,
-                autocorrect: false,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.black),
-                  ),
-                  border: InputBorder.none,
-                  label: Text("Password"),
-                  labelStyle: TextStyle(color: Colors.black),
-                  hintText: "Enter your Password",
-                  hintStyle: TextStyle(color: Colors.grey),
-                  prefixIcon:
-                      Icon(Icons.lock, color: Colors.grey), // Add prefix icon
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _showPassword = !_showPassword;
-                      });
-                    },
-                    icon: Icon(
-                        _showPassword ? Icons.visibility : Icons.visibility_off,
-                        color: Colors.black),
-                  ),
-
-                  filled: true,
-                  fillColor: Colors.white,
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
               Center(
                 child: TextButton(
                   onPressed: () async {
                     final email = controller.email;
-                    final pass = controller.password;
-
                     if (email.text.isEmpty) {
                       Fluttertoast.showToast(msg: "Please Enter Email");
                     } else if (!email.text.isEmail) {
                       Fluttertoast.showToast(msg: "Enter Valid Email");
-                    } else if (pass.text.isEmpty) {
-                      Fluttertoast.showToast(msg: "Please Enter Password");
-                    } else if (pass.text.length < 6) {
-                      Fluttertoast.showToast(
-                          msg: "Password length is greater than 6");
                     } else {
                       Future<bool> isEmail =
                           controller.checkIfEmailInUse(email.text);
                       if (await isEmail) {
-                        Future<bool> isPass = authrepo.login(
-                          email.text,
-                          pass.text,
-                        );
-                        if (await isPass) {
-                          Future.delayed(Duration(seconds: 2));
-                          Fluttertoast.showToast(msg: "Login Successfully");
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (c) => MyHomePage()));
-                          email.clear();
-                          pass.clear();
-                        } else {
-                          Fluttertoast.showToast(msg: "Password is wrong");
-                        }
+                        await authrepo.passwordReset(email.text);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (c) => LoginView()));
                       } else {
                         Fluttertoast.showToast(msg: "Email is not exists");
                       }
@@ -173,7 +111,7 @@ class _LoginViewState extends State<LoginView> {
                     padding: const EdgeInsets.all(
                         0.0), // Add some padding for better visibility
                     child: Text(
-                      'Login', // Add the text "Login"
+                      'Send Email', // Add the text "Login"
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 15,
@@ -186,17 +124,6 @@ class _LoginViewState extends State<LoginView> {
               SizedBox(
                 height: 20,
               ),
-              Center(
-                  child: TextButton(
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (c) => RegisterView()));
-                },
-                child: Text(
-                  'Not registered yet? Register Here!',
-                  style: TextStyle(color: Colors.black),
-                ),
-              )),
             ],
           ),
         ),
