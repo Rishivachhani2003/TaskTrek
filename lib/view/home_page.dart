@@ -2,7 +2,7 @@
 
 // // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_build_context_synchronously, unnecessary_string_interpolations, prefer_const_constructors_in_immutables
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, use_build_context_synchronously, unnecessary_string_interpolations
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +35,7 @@ class MyHomePage extends ConsumerWidget {
         title: Row(
           children: [
             Text(
-              "TaskTrek",
+              "ToDoApp",
               style:
                   TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
             ),

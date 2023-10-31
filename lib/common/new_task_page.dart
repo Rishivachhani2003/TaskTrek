@@ -27,7 +27,7 @@ class AddNewTaskModel extends ConsumerWidget {
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
 
-  @override 
+  @override
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = Get.put(TaskRepository());
     final modelrepo = Get.put(ModelController());
@@ -43,7 +43,7 @@ class AddNewTaskModel extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(
+                    SizedBox(
                       width: double.infinity,
                       child: Text(
                         "New Task Todo",
@@ -58,34 +58,34 @@ class AddNewTaskModel extends ConsumerWidget {
                       thickness: 1.2,
                       color: Colors.grey.shade200,
                     ),
-                    const Gap(12),
-                    const Text(
+                    Gap(12),
+                    Text(
                       "Title Task",
                       style: AppStyle.headingOne,
                     ),
-                    const Gap(6),
+                    Gap(6),
                     TextFieldWidget(
                       txtController: titleController,
                       hintText: "Add New Task",
                       maxLine: 1,
                     ),
-                    const Gap(12),
-                    const Text(
+                    Gap(12),
+                    Text(
                       "Description",
                       style: AppStyle.headingOne,
                     ),
-                    const Gap(6),
+                    Gap(6),
                     TextFieldWidget(
                       txtController: descriptionController,
                       hintText: "Add Description",
                       maxLine: 3,
                     ),
-                    const Gap(12),
-                    const Text(
+                    Gap(12),
+                    Text(
                       "Category",
                       style: AppStyle.headingOne,
                     ),
-                    const Gap(6),
+                    Gap(6),
                     Row(
                       children: [
                         Expanded(
@@ -142,7 +142,7 @@ class AddNewTaskModel extends ConsumerWidget {
                             }
                           },
                         ),
-                        const Gap(22),
+                        Gap(22),
                         DateTimeWidget(
                           titleText: "Time",
                           iconSection: CupertinoIcons.clock,
@@ -161,7 +161,7 @@ class AddNewTaskModel extends ConsumerWidget {
                         ),
                       ],
                     ),
-                    const Gap(12),
+                    Gap(12),
                     Row(
                       children: [
                         Expanded(
@@ -176,15 +176,15 @@ class AddNewTaskModel extends ConsumerWidget {
                               side: BorderSide(
                                 color: Colors.blue.shade800,
                               ),
-                              padding: const EdgeInsets.symmetric(vertical: 14),
+                              padding: EdgeInsets.symmetric(vertical: 14),
                             ),
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: const Text("Cancel"),
+                            child: Text("Cancel"),
                           ),
                         ),
-                        const Gap(20),
+                        Gap(20),
                         Expanded(
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
@@ -197,7 +197,7 @@ class AddNewTaskModel extends ConsumerWidget {
                               side: BorderSide(
                                 color: Colors.blue.shade800,
                               ),
-                              padding: const EdgeInsets.symmetric(vertical: 14),
+                              padding: EdgeInsets.symmetric(vertical: 14),
                             ),
                             onPressed: () {
                               final getRadioValue = ref.read(radioProvider);
@@ -242,7 +242,7 @@ class AddNewTaskModel extends ConsumerWidget {
                                         builder: (c) => MyHomePage()));
                               }
                             },
-                            child: const Text("Create"),
+                            child: Text("Create"),
                           ),
                         ),
                       ],
@@ -252,7 +252,7 @@ class AddNewTaskModel extends ConsumerWidget {
               ),
             );
           } else {
-            return const Center(
+            return Center(
               child: CircularProgressIndicator(),
             );
           }

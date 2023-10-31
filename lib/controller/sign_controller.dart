@@ -8,6 +8,7 @@ class SignupController extends GetxController {
   final email = TextEditingController();
   final password = TextEditingController();
   final name = TextEditingController();
+  final repassword = TextEditingController();
   final userrepo = Get.put(UserRepository());
 
   Future<bool> checkIfEmailInUse(String emailAddress) async {

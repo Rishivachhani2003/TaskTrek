@@ -1,7 +1,5 @@
 // // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-// ignore_for_file: unnecessary_import
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -32,7 +30,7 @@ class DateTimeWidget extends ConsumerWidget {
             titleText,
             style: AppStyle.headingOne,
           ),
-          const Gap(6),
+          Gap(6),
           Material(
             child: Ink(
               decoration: BoxDecoration(
@@ -43,7 +41,7 @@ class DateTimeWidget extends ConsumerWidget {
                 borderRadius: BorderRadius.circular(10),
                 onTap: () => onTap(),
                 child: Container(
-                  padding: const EdgeInsets.symmetric(
+                  padding: EdgeInsets.symmetric(
                     horizontal: 12,
                     vertical: 12,
                   ),
@@ -54,7 +52,7 @@ class DateTimeWidget extends ConsumerWidget {
                   child: Row(
                     children: [
                       Icon(iconSection),
-                      const Gap(10),
+                      Gap(10),
                       Text(valueText),
                     ],
                   ),
