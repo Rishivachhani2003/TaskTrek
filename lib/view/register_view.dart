@@ -32,6 +32,10 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Image.asset("assets/images/launcher_icon.png"),
+            ),
             SizedBox(
               height: 20,
             ),

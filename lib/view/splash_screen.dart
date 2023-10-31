@@ -13,7 +13,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   startTimer() {
-    Timer(const Duration(seconds: 2), () async {
+    Timer(const Duration(seconds: 5), () async {
       if (await auth.currentUser != null) {
         Navigator.push(
             context, MaterialPageRoute(builder: (c) => MyHomePage()));
@@ -36,6 +36,13 @@ class _SplashScreenState extends State<SplashScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Image.asset("assets/images/launcher_icon.png"),
+          ),
+          SizedBox(
+            height: 15,
+          ),
           Text("Hello, Welcome in Notes"),
           SizedBox(
             height: 15,
