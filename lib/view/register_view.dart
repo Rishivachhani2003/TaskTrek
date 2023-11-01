@@ -28,248 +28,263 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Image.asset("assets/images/launcher_icon.png"),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              "Register to notes app",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            TextField(
-              controller: controller.name,
-              enableSuggestions: false,
-              autocorrect: false,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(color: Colors.blueGrey),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(color: Colors.black),
-                ),
-                border: InputBorder.none,
-                label: Text("Name"),
-                labelStyle: TextStyle(color: Colors.black),
-                hintText: "Enter your Name",
-                hintStyle: TextStyle(color: Colors.grey),
-                prefixIcon: Icon(
-                  Icons.person,
-                  color: Colors.grey,
-                ),
-                filled: true,
-                fillColor: Colors.white,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 30,
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            TextField(
-              controller: controller.email,
-              enableSuggestions: false,
-              autocorrect: false,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(color: Colors.blueGrey),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Container(
+                  height: MediaQuery.of(context).size.height - 500,
+                  width: MediaQuery.of(context).size.width - 100,
+                  decoration: BoxDecoration(),
+                  child: Image.asset(
+                    "assets/images/launcher_icon.png",
+                  ),
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(color: Colors.black),
-                ),
-                border: InputBorder.none,
-                label: Text("Email"),
-                labelStyle: TextStyle(color: Colors.black),
-                hintText: "Enter your Email",
-                hintStyle: TextStyle(color: Colors.grey),
-                prefixIcon: Icon(
-                  Icons.email,
-                  color: Colors.grey,
-                ),
-                filled: true,
-                fillColor: Colors.white,
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            TextField(
-              controller: controller.password,
-              obscureText: !_showPassword,
-              enableSuggestions: false,
-              autocorrect: false,
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(color: Colors.grey),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(color: Colors.black),
-                ),
-                border: InputBorder.none,
-                label: Text("Password"),
-                labelStyle: TextStyle(color: Colors.black),
-                hintText: "Enter your Password",
-                hintStyle: TextStyle(color: Colors.grey),
-                prefixIcon:
-                    Icon(Icons.lock, color: Colors.grey), // Add prefix icon
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    setState(() {
-                      _showPassword = !_showPassword;
-                    });
-                  },
-                  icon: Icon(
-                      _showPassword ? Icons.visibility : Icons.visibility_off,
-                      color: Colors.black),
-                ),
-
-                filled: true,
-                fillColor: Colors.white,
+              SizedBox(
+                height: 20,
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            TextField(
-              controller: controller.repassword,
-              obscureText: !_showrePassword,
-              enableSuggestions: false,
-              autocorrect: false,
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(color: Colors.grey),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(color: Colors.black),
-                ),
-                border: InputBorder.none,
-                label: Text("Retype Password"),
-                labelStyle: TextStyle(color: Colors.black),
-                hintText: "Enter your Retype Password",
-                hintStyle: TextStyle(color: Colors.grey),
-                prefixIcon:
-                    Icon(Icons.lock, color: Colors.grey), // Add prefix icon
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    setState(() {
-                      _showrePassword = !_showrePassword;
-                    });
-                  },
-                  icon: Icon(
-                      _showrePassword ? Icons.visibility : Icons.visibility_off,
-                      color: Colors.black),
-                ),
-
-                filled: true,
-                fillColor: Colors.white,
+              Text(
+                "Register to TaskTrek",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
               ),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Center(
-              child: TextButton(
-                onPressed: () async {
-                  final name = controller.name;
-                  final email = controller.email;
-                  final repass = controller.repassword;
-                  final pass = controller.password;
+              SizedBox(
+                height: 20,
+              ),
+              TextField(
+                controller: controller.name,
+                enableSuggestions: false,
+                autocorrect: false,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Colors.blueGrey),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Colors.black),
+                  ),
+                  border: InputBorder.none,
+                  label: Text("Name"),
+                  labelStyle: TextStyle(color: Colors.black),
+                  hintText: "Enter your Name",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon: Icon(
+                    Icons.person,
+                    color: Colors.grey,
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextField(
+                controller: controller.email,
+                enableSuggestions: false,
+                autocorrect: false,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Colors.blueGrey),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Colors.black),
+                  ),
+                  border: InputBorder.none,
+                  label: Text("Email"),
+                  labelStyle: TextStyle(color: Colors.black),
+                  hintText: "Enter your Email",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon: Icon(
+                    Icons.email,
+                    color: Colors.grey,
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextField(
+                controller: controller.password,
+                obscureText: !_showPassword,
+                enableSuggestions: false,
+                autocorrect: false,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Colors.black),
+                  ),
+                  border: InputBorder.none,
+                  label: Text("Password"),
+                  labelStyle: TextStyle(color: Colors.black),
+                  hintText: "Enter your Password",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon:
+                      Icon(Icons.lock, color: Colors.grey), // Add prefix icon
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _showPassword = !_showPassword;
+                      });
+                    },
+                    icon: Icon(
+                        _showPassword ? Icons.visibility : Icons.visibility_off,
+                        color: Colors.black),
+                  ),
 
-                  if (name.text.isEmpty) {
-                    Fluttertoast.showToast(msg: "Please Enter name");
-                  } else if (email.text.isEmpty) {
-                    Fluttertoast.showToast(msg: "Please Enter Email");
-                  } else if (!email.text.isEmail) {
-                    Fluttertoast.showToast(msg: "Enter Valid Email");
-                  } else if (pass.text.isEmpty) {
-                    Fluttertoast.showToast(msg: "Please Enter Password");
-                  } else if (pass.text.length < 6) {
-                    Fluttertoast.showToast(
-                        msg: "Password length is greater than 6");
-                  } else if (repass.text.isEmpty) {
-                    Fluttertoast.showToast(msg: "Please Enter Repeat Password");
-                  } else if (repass.text.length < 6) {
-                    Fluttertoast.showToast(
-                        msg: "Password length is greater than 6");
-                  } else if (pass.text != repass.text) {
-                    Fluttertoast.showToast(msg: "Password is not match");
-                  } else {
-                    final user = UserModel(
-                      name: name.text.trim(),
-                      email: email.text.trim(),
-                      password: pass.text.trim(),
-                    );
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextField(
+                controller: controller.repassword,
+                obscureText: !_showrePassword,
+                enableSuggestions: false,
+                autocorrect: false,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    borderSide: BorderSide(color: Colors.black),
+                  ),
+                  border: InputBorder.none,
+                  label: Text("Retype Password"),
+                  labelStyle: TextStyle(color: Colors.black),
+                  hintText: "Enter your Retype Password",
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon:
+                      Icon(Icons.lock, color: Colors.grey), // Add prefix icon
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _showrePassword = !_showrePassword;
+                      });
+                    },
+                    icon: Icon(
+                        _showrePassword
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        color: Colors.black),
+                  ),
 
-                    Future<bool> isEmail =
-                        controller.checkIfEmailInUse(email.text);
-                    if (await isEmail) {
-                      Fluttertoast.showToast(msg: "Email Already in Use");
+                  filled: true,
+                  fillColor: Colors.white,
+                ),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Center(
+                child: TextButton(
+                  onPressed: () async {
+                    final name = controller.name;
+                    final email = controller.email;
+                    final repass = controller.repassword;
+                    final pass = controller.password;
+
+                    if (name.text.isEmpty) {
+                      Fluttertoast.showToast(msg: "Please Enter name");
+                    } else if (email.text.isEmpty) {
+                      Fluttertoast.showToast(msg: "Please Enter Email");
+                    } else if (!email.text.isEmail) {
+                      Fluttertoast.showToast(msg: "Enter Valid Email");
+                    } else if (pass.text.isEmpty) {
+                      Fluttertoast.showToast(msg: "Please Enter Password");
+                    } else if (pass.text.length < 6) {
+                      Fluttertoast.showToast(
+                          msg: "Password length is greater than 6");
+                    } else if (repass.text.isEmpty) {
+                      Fluttertoast.showToast(
+                          msg: "Please Enter Repeat Password");
+                    } else if (repass.text.length < 6) {
+                      Fluttertoast.showToast(
+                          msg: "Password length is greater than 6");
+                    } else if (pass.text != repass.text) {
+                      Fluttertoast.showToast(msg: "Password is not match");
                     } else {
-                      await authRepo.signup(email.text, pass.text);
-                      await userRepo.createUser(user);
-                      Future.delayed(Duration(seconds: 2));
-                      Fluttertoast.showToast(msg: "Account Created");
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (c) => MyHomePage()));
-                      name.clear();
-                      email.clear();
-                      pass.clear();
+                      final user = UserModel(
+                        name: name.text.trim(),
+                        email: email.text.trim(),
+                        password: pass.text.trim(),
+                      );
+
+                      Future<bool> isEmail =
+                          controller.checkIfEmailInUse(email.text);
+                      if (await isEmail) {
+                        Fluttertoast.showToast(msg: "Email Already in Use");
+                      } else {
+                        await authRepo.signup(email.text, pass.text);
+                        await userRepo.createUser(user);
+                        Future.delayed(Duration(seconds: 2));
+                        Fluttertoast.showToast(msg: "Account Created");
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (c) => MyHomePage()));
+                        name.clear();
+                        email.clear();
+                        pass.clear();
+                      }
                     }
-                  }
-                },
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.black),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                  },
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.black),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                  child: Text(
+                    'Register',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-                child: Text(
-                  'Register',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (c) => LoginView()));
+                },
+                child: const Text(
+                  'Already registered? Login Here!',
+                  style: TextStyle(color: Colors.black),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (c) => LoginView()));
-              },
-              child: const Text(
-                'Already registered? Login Here!',
-                style: TextStyle(color: Colors.black),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -33,102 +33,117 @@ class _ForgetPassViewState extends State<ForgetPassView> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Image.asset("assets/images/launcher_icon.png"),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                "Reset Password",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              TextField(
-                controller: controller.email,
-                enableSuggestions: false,
-                autocorrect: false,
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.blueGrey),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.black),
-                  ),
-                  border: InputBorder.none,
-                  label: Text("Email"),
-                  labelStyle: TextStyle(color: Colors.black),
-                  hintText: "Enter your Email",
-                  hintStyle: TextStyle(color: Colors.grey),
-                  prefixIcon: Icon(
-                    Icons.email,
-                    color: Colors.grey,
-                  ),
-                  filled: true,
-                  fillColor: Colors.white,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 30,
                 ),
-              ),
-              Center(
-                child: TextButton(
-                  onPressed: () async {
-                    final email = controller.email;
-                    if (email.text.isEmpty) {
-                      Fluttertoast.showToast(msg: "Please Enter Email");
-                    } else if (!email.text.isEmail) {
-                      Fluttertoast.showToast(msg: "Enter Valid Email");
-                    } else {
-                      Future<bool> isEmail =
-                          controller.checkIfEmailInUse(email.text);
-                      if (await isEmail) {
-                        await authrepo.passwordReset(email.text);
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (c) => LoginView()));
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height - 500,
+                    width: MediaQuery.of(context).size.width - 100,
+                    decoration: BoxDecoration(),
+                    child: Image.asset(
+                      "assets/images/launcher_icon.png",
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Reset Password",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                TextField(
+                  controller: controller.email,
+                  enableSuggestions: false,
+                  autocorrect: false,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide(color: Colors.blueGrey),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide(color: Colors.black),
+                    ),
+                    border: InputBorder.none,
+                    label: Text("Email"),
+                    labelStyle: TextStyle(color: Colors.black),
+                    hintText: "Enter your Email",
+                    hintStyle: TextStyle(color: Colors.grey),
+                    prefixIcon: Icon(
+                      Icons.email,
+                      color: Colors.grey,
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Center(
+                  child: TextButton(
+                    onPressed: () async {
+                      final email = controller.email;
+                      if (email.text.isEmpty) {
+                        Fluttertoast.showToast(msg: "Please Enter Email");
+                      } else if (!email.text.isEmail) {
+                        Fluttertoast.showToast(msg: "Enter Valid Email");
                       } else {
-                        Fluttertoast.showToast(msg: "Email is not exists");
+                        Future<bool> isEmail =
+                            controller.checkIfEmailInUse(email.text);
+                        if (await isEmail) {
+                          await authrepo.passwordReset(email.text);
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (c) => LoginView()));
+                        } else {
+                          Fluttertoast.showToast(msg: "Email is not exists");
+                        }
                       }
-                    }
-                  },
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            10), // Make the button circular
+                    },
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              10), // Make the button circular
+                        ),
                       ),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          Colors.black), // Set background color to blue
                     ),
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                        Colors.black), // Set background color to blue
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(
-                        0.0), // Add some padding for better visibility
-                    child: Text(
-                      'Send Email', // Add the text "Login"
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
+                    child: Padding(
+                      padding: const EdgeInsets.all(
+                          0.0), // Add some padding for better visibility
+                      child: Text(
+                        'Send Email', // Add the text "Login"
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-            ],
+                SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -36,14 +36,24 @@ class _SplashScreenState extends State<SplashScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          SizedBox(
+            height: 30,
+          ),
           Padding(
             padding: const EdgeInsets.all(12.0),
-            child: Image.asset("assets/images/launcher_icon.png"),
+            child: Container(
+              height: MediaQuery.of(context).size.height - 500,
+              width: MediaQuery.of(context).size.width - 100,
+              decoration: BoxDecoration(),
+              child: Image.asset(
+                "assets/images/launcher_icon.png",
+              ),
+            ),
           ),
           SizedBox(
             height: 15,
           ),
-          Text("Hello, Welcome in Notes"),
+          Text("Hello, Welcome in TaskTrek"),
           SizedBox(
             height: 15,
           ),
