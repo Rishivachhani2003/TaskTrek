@@ -38,7 +38,7 @@ class _ForgetPassViewState extends State<ForgetPassView> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Padding(
@@ -46,23 +46,23 @@ class _ForgetPassViewState extends State<ForgetPassView> {
                   child: Container(
                     height: MediaQuery.of(context).size.height - 500,
                     width: MediaQuery.of(context).size.width - 100,
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Image.asset(
                       "assets/images/launcher_icon.png",
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Text(
+                const Text(
                   "Reset Password",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 24,
                       fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 TextField(
@@ -73,18 +73,18 @@ class _ForgetPassViewState extends State<ForgetPassView> {
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide(color: Colors.blueGrey),
+                      borderSide: const BorderSide(color: Colors.blueGrey),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide(color: Colors.black),
+                      borderSide: const BorderSide(color: Colors.black),
                     ),
                     border: InputBorder.none,
-                    label: Text("Email"),
-                    labelStyle: TextStyle(color: Colors.black),
+                    label: const Text("Email"),
+                    labelStyle: const TextStyle(color: Colors.black),
                     hintText: "Enter your Email",
-                    hintStyle: TextStyle(color: Colors.grey),
-                    prefixIcon: Icon(
+                    hintStyle: const TextStyle(color: Colors.grey),
+                    prefixIcon: const Icon(
                       Icons.email,
                       color: Colors.grey,
                     ),
@@ -92,7 +92,7 @@ class _ForgetPassViewState extends State<ForgetPassView> {
                     fillColor: Colors.white,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Center(
@@ -109,7 +109,7 @@ class _ForgetPassViewState extends State<ForgetPassView> {
                         if (await isEmail) {
                           await authrepo.passwordReset(email.text);
                           Navigator.push(context,
-                              MaterialPageRoute(builder: (c) => LoginView()));
+                              MaterialPageRoute(builder: (c) => const LoginView()));
                         } else {
                           Fluttertoast.showToast(msg: "Email is not exists");
                         }
@@ -125,8 +125,8 @@ class _ForgetPassViewState extends State<ForgetPassView> {
                       backgroundColor: MaterialStateProperty.all<Color>(
                           Colors.black), // Set background color to blue
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(
+                    child: const Padding(
+                      padding: EdgeInsets.all(
                           0.0), // Add some padding for better visibility
                       child: Text(
                         'Send Email', // Add the text "Login"
@@ -139,7 +139,7 @@ class _ForgetPassViewState extends State<ForgetPassView> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
               ],

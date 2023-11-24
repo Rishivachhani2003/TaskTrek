@@ -43,7 +43,7 @@ class AddNewTaskModel extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: double.infinity,
                       child: Text(
                         "New Task Todo",
@@ -58,34 +58,34 @@ class AddNewTaskModel extends ConsumerWidget {
                       thickness: 1.2,
                       color: Colors.grey.shade200,
                     ),
-                    Gap(12),
-                    Text(
+                    const Gap(12),
+                    const Text(
                       "Title Task",
                       style: AppStyle.headingOne,
                     ),
-                    Gap(6),
+                    const Gap(6),
                     TextFieldWidget(
                       txtController: titleController,
                       hintText: "Add New Task",
                       maxLine: 1,
                     ),
-                    Gap(12),
-                    Text(
+                    const Gap(12),
+                    const Text(
                       "Description",
                       style: AppStyle.headingOne,
                     ),
-                    Gap(6),
+                    const Gap(6),
                     TextFieldWidget(
                       txtController: descriptionController,
                       hintText: "Add Description",
                       maxLine: 3,
                     ),
-                    Gap(12),
-                    Text(
+                    const Gap(12),
+                    const Text(
                       "Category",
                       style: AppStyle.headingOne,
                     ),
-                    Gap(6),
+                    const Gap(6),
                     Row(
                       children: [
                         Expanded(
@@ -142,7 +142,7 @@ class AddNewTaskModel extends ConsumerWidget {
                             }
                           },
                         ),
-                        Gap(22),
+                        const Gap(22),
                         DateTimeWidget(
                           titleText: "Time",
                           iconSection: CupertinoIcons.clock,
@@ -161,7 +161,7 @@ class AddNewTaskModel extends ConsumerWidget {
                         ),
                       ],
                     ),
-                    Gap(12),
+                    const Gap(12),
                     Row(
                       children: [
                         Expanded(
@@ -176,15 +176,15 @@ class AddNewTaskModel extends ConsumerWidget {
                               side: BorderSide(
                                 color: Colors.blue.shade800,
                               ),
-                              padding: EdgeInsets.symmetric(vertical: 14),
+                              padding: const EdgeInsets.symmetric(vertical: 14),
                             ),
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: Text("Cancel"),
+                            child: const Text("Cancel"),
                           ),
                         ),
-                        Gap(20),
+                        const Gap(20),
                         Expanded(
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
@@ -197,7 +197,7 @@ class AddNewTaskModel extends ConsumerWidget {
                               side: BorderSide(
                                 color: Colors.blue.shade800,
                               ),
-                              padding: EdgeInsets.symmetric(vertical: 14),
+                              padding: const EdgeInsets.symmetric(vertical: 14),
                             ),
                             onPressed: () {
                               final getRadioValue = ref.read(radioProvider);
@@ -239,10 +239,10 @@ class AddNewTaskModel extends ConsumerWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (c) => MyHomePage()));
+                                        builder: (c) => const MyHomePage()));
                               }
                             },
-                            child: Text("Create"),
+                            child: const Text("Create"),
                           ),
                         ),
                       ],
@@ -252,7 +252,7 @@ class AddNewTaskModel extends ConsumerWidget {
               ),
             );
           } else {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }

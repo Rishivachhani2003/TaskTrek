@@ -1,3 +1,5 @@
+// ignore_for_file: await_only_futures, prefer_const_constructors
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:to_do_riverpod/constants/firebase_consts.dart';
@@ -31,35 +33,38 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-        child: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 30,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Container(
-              height: MediaQuery.of(context).size.height - 500,
-              width: MediaQuery.of(context).size.width - 100,
-              decoration: BoxDecoration(),
-              child: Image.asset(
-                "assets/images/launcher_icon.png",
-              ),
+    return Scaffold(
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: constraints.maxHeight * 0.05,
+                ),
+                Padding(
+                  padding: EdgeInsets.all(constraints.maxWidth * 0.1),
+                  child: Container(
+                    height: constraints.maxHeight * 0.4,
+                    width: constraints.maxWidth * 0.8,
+                    decoration: BoxDecoration(),
+                    child: Image.asset("assets/images/launcher_icon.png"),
+                  ),
+                ),
+                SizedBox(
+                  height: constraints.maxHeight * 0.03,
+                ),
+                Text("Hello, Welcome to TaskTrek"),
+                SizedBox(
+                  height: constraints.maxHeight * 0.03,
+                ),
+                CircularProgressIndicator(),
+              ],
             ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Text("Hello, Welcome in TaskTrek"),
-          SizedBox(
-            height: 15,
-          ),
-          CircularProgressIndicator(),
-        ],
+          );
+        },
       ),
-    ));
+    );
   }
 }

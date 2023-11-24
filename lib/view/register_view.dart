@@ -33,7 +33,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Padding(
@@ -41,23 +41,23 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                 child: Container(
                   height: MediaQuery.of(context).size.height - 500,
                   width: MediaQuery.of(context).size.width - 100,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Image.asset(
                     "assets/images/launcher_icon.png",
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 "Register to TaskTrek",
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 24,
                     fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextField(
@@ -68,18 +68,18 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.blueGrey),
+                    borderSide: const BorderSide(color: Colors.blueGrey),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: Colors.black),
                   ),
                   border: InputBorder.none,
-                  label: Text("Name"),
-                  labelStyle: TextStyle(color: Colors.black),
+                  label: const Text("Name"),
+                  labelStyle: const TextStyle(color: Colors.black),
                   hintText: "Enter your Name",
-                  hintStyle: TextStyle(color: Colors.grey),
-                  prefixIcon: Icon(
+                  hintStyle: const TextStyle(color: Colors.grey),
+                  prefixIcon: const Icon(
                     Icons.person,
                     color: Colors.grey,
                   ),
@@ -87,7 +87,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                   fillColor: Colors.white,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextField(
@@ -98,18 +98,18 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.blueGrey),
+                    borderSide: const BorderSide(color: Colors.blueGrey),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: Colors.black),
                   ),
                   border: InputBorder.none,
-                  label: Text("Email"),
-                  labelStyle: TextStyle(color: Colors.black),
+                  label: const Text("Email"),
+                  labelStyle: const TextStyle(color: Colors.black),
                   hintText: "Enter your Email",
-                  hintStyle: TextStyle(color: Colors.grey),
-                  prefixIcon: Icon(
+                  hintStyle: const TextStyle(color: Colors.grey),
+                  prefixIcon: const Icon(
                     Icons.email,
                     color: Colors.grey,
                   ),
@@ -117,7 +117,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                   fillColor: Colors.white,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextField(
@@ -128,19 +128,19 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey),
+                    borderSide: const BorderSide(color: Colors.grey),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: Colors.black),
                   ),
                   border: InputBorder.none,
-                  label: Text("Password"),
-                  labelStyle: TextStyle(color: Colors.black),
+                  label: const Text("Password"),
+                  labelStyle: const TextStyle(color: Colors.black),
                   hintText: "Enter your Password",
-                  hintStyle: TextStyle(color: Colors.grey),
+                  hintStyle: const TextStyle(color: Colors.grey),
                   prefixIcon:
-                      Icon(Icons.lock, color: Colors.grey), // Add prefix icon
+                      const Icon(Icons.lock, color: Colors.grey), // Add prefix icon
                   suffixIcon: IconButton(
                     onPressed: () {
                       setState(() {
@@ -156,7 +156,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                   fillColor: Colors.white,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextField(
@@ -167,19 +167,19 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.grey),
+                    borderSide: const BorderSide(color: Colors.grey),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(color: Colors.black),
+                    borderSide: const BorderSide(color: Colors.black),
                   ),
                   border: InputBorder.none,
-                  label: Text("Retype Password"),
-                  labelStyle: TextStyle(color: Colors.black),
+                  label: const Text("Retype Password"),
+                  labelStyle: const TextStyle(color: Colors.black),
                   hintText: "Enter your Retype Password",
-                  hintStyle: TextStyle(color: Colors.grey),
+                  hintStyle: const TextStyle(color: Colors.grey),
                   prefixIcon:
-                      Icon(Icons.lock, color: Colors.grey), // Add prefix icon
+                      const Icon(Icons.lock, color: Colors.grey), // Add prefix icon
                   suffixIcon: IconButton(
                     onPressed: () {
                       setState(() {
@@ -197,7 +197,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                   fillColor: Colors.white,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Center(
@@ -241,7 +241,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                       } else {
                         await authRepo.signup(email.text, pass.text);
                         await userRepo.createUser(user);
-                        Future.delayed(Duration(seconds: 2));
+                        Future.delayed(const Duration(seconds: 2));
                         Fluttertoast.showToast(msg: "Account Created");
                         Navigator.push(context,
                             MaterialPageRoute(builder: (c) => MyHomePage()));
@@ -260,7 +260,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                       ),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Register',
                     style: TextStyle(
                       color: Colors.white,
@@ -270,13 +270,13 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (c) => LoginView()));
+                      context, MaterialPageRoute(builder: (c) => const LoginView()));
                 },
                 child: const Text(
                   'Already registered? Login Here!',
