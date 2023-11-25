@@ -6,6 +6,7 @@ import 'package:to_do_riverpod/controller/auth_repository.dart';
 import 'package:to_do_riverpod/controller/sign_controller.dart';
 import 'package:to_do_riverpod/controller/user_repository.dart';
 import 'package:to_do_riverpod/model/usermodel.dart';
+import 'package:to_do_riverpod/services/local_notification.dart';
 import 'package:to_do_riverpod/view/home_page.dart';
 import 'package:to_do_riverpod/view/login_view.dart';
 
@@ -20,8 +21,14 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
   final controller = Get.put(SignupController());
   final userRepo = Get.put(UserRepository());
   final authRepo = Get.put(AuthenticationRepository());
-  bool _showPassword = true;
-  bool _showrePassword = true;
+  bool _showPassword = false;
+  bool _showrePassword = false;
+
+  @override
+  void initState() {
+    super.initState();
+    LocalNotification.initialize();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -132,15 +139,17 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
-                    borderSide: const BorderSide(color: Colors.black),
+                    borderSide: BorderSide(color: Colors.black),
                   ),
                   border: InputBorder.none,
-                  label: const Text("Password"),
-                  labelStyle: const TextStyle(color: Colors.black),
+                  label: Text("Password"),
+                  labelStyle: TextStyle(color: Colors.black),
                   hintText: "Enter your Password",
-                  hintStyle: const TextStyle(color: Colors.grey),
-                  prefixIcon:
-                      const Icon(Icons.lock, color: Colors.grey), // Add prefix icon
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon: Icon(
+                    Icons.lock,
+                    color: Colors.grey,
+                  ),
                   suffixIcon: IconButton(
                     onPressed: () {
                       setState(() {
@@ -151,7 +160,6 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                         _showPassword ? Icons.visibility : Icons.visibility_off,
                         color: Colors.black),
                   ),
-
                   filled: true,
                   fillColor: Colors.white,
                 ),
@@ -178,8 +186,8 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                   labelStyle: const TextStyle(color: Colors.black),
                   hintText: "Enter your Retype Password",
                   hintStyle: const TextStyle(color: Colors.grey),
-                  prefixIcon:
-                      const Icon(Icons.lock, color: Colors.grey), // Add prefix icon
+                  prefixIcon: const Icon(Icons.lock,
+                      color: Colors.grey), // Add prefix icon
                   suffixIcon: IconButton(
                     onPressed: () {
                       setState(() {
@@ -243,6 +251,10 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                         await userRepo.createUser(user);
                         Future.delayed(const Duration(seconds: 2));
                         Fluttertoast.showToast(msg: "Account Created");
+                        LocalNotification.showNotification(
+                          title: "TaskTrek",
+                          body: "Welcome, in TaskTrek",
+                        );
                         Navigator.push(context,
                             MaterialPageRoute(builder: (c) => MyHomePage()));
                         name.clear();
@@ -275,8 +287,8 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
               ),
               TextButton(
                 onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (c) => const LoginView()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (c) => const LoginView()));
                 },
                 child: const Text(
                   'Already registered? Login Here!',

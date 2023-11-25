@@ -214,7 +214,8 @@ class AddNewTaskModel extends ConsumerWidget {
                                   break;
                               }
                               if (titleController.text.isEmpty) {
-                                Fluttertoast.showToast(msg: "Task is Empty");
+                                Fluttertoast.showToast(
+                                    msg: "Task Title is Empty");
                               } else if (descriptionController.text.isEmpty) {
                                 Fluttertoast.showToast(
                                     msg: "Task description is Empty");
@@ -239,7 +240,7 @@ class AddNewTaskModel extends ConsumerWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (c) => const MyHomePage()));
+                                        builder: (c) => MyHomePage()));
                               }
                             },
                             child: const Text("Create"),
@@ -252,7 +253,7 @@ class AddNewTaskModel extends ConsumerWidget {
               ),
             );
           } else {
-            return const Center(
+            return Center(
               child: CircularProgressIndicator(),
             );
           }

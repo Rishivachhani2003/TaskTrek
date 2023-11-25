@@ -20,161 +20,173 @@ class TaskListView extends StatefulWidget {
 class _TaskListViewState extends State<TaskListView> {
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     final controller = Get.put(HomeController());
     final taskRepo = Get.put(TaskRepository());
-    return FutureBuilder(
-      future: controller.getTodoData(
-        id: widget.userid,
-      ),
-      builder: ((context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          if (snapshot.hasData) {
-            return ListView.builder(
-              itemCount: snapshot.data!.length,
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                Color categoryColor = Colors.white;
-                final getCategory = snapshot.data![index].category;
-                switch (getCategory) {
-                  case 'Learning':
-                    categoryColor = Colors.green;
-                    break;
-                  case 'Working':
-                    categoryColor = Colors.blue.shade700;
-                    break;
-                  case 'General':
-                    categoryColor = Colors.amber.shade700;
-                    break;
-                }
-                return Container(
-                  margin: EdgeInsets.symmetric(vertical: 5),
-                  width: double.infinity,
-                  height: 120,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: categoryColor,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(12),
-                            bottomLeft: Radius.circular(12),
+    return Center(
+      child: FutureBuilder(
+        future: controller.getTodoData(
+          id: widget.userid,
+        ),
+        builder: ((context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                itemCount: snapshot.data!.length,
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  Color categoryColor = Colors.white;
+                  final getCategory = snapshot.data![index].category;
+                  switch (getCategory) {
+                    case 'Learning':
+                      categoryColor = Colors.green;
+                      break;
+                    case 'Working':
+                      categoryColor = Colors.blue.shade700;
+                      break;
+                    case 'General':
+                      categoryColor = Colors.amber.shade700;
+                      break;
+                  }
+                  return Container(
+                    margin: EdgeInsets.symmetric(vertical: 5),
+                    width: double.infinity,
+                    height: 120,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: categoryColor,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(12),
+                              bottomLeft: Radius.circular(12),
+                            ),
                           ),
+                          width: 30,
                         ),
-                        width: 30,
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 20,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ListTile(
-                                contentPadding: EdgeInsets.zero,
-                                leading: IconButton(
-                                  icon: Icon(
-                                    CupertinoIcons.delete,
-                                  ),
-                                  onPressed: () async {
-                                    final shouldDelete =
-                                        await showDeleteDialog(context);
-                                    if (shouldDelete) {
-                                      taskRepo.deleteTask(
-                                        userid: widget.userid,
-                                        todoid: snapshot.data![index].docID,
-                                      );
-                                      setState(() {});
-                                    }
-                                  },
-                                ),
-                                title: Text(
-                                  snapshot.data![index].titleTask,
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                    decoration: snapshot.data![index].isDone
-                                        ? TextDecoration.lineThrough
-                                        : null,
-                                  ),
-                                ),
-                                subtitle: Text(
-                                  snapshot.data![index].description,
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                    decoration: snapshot.data![index].isDone
-                                        ? TextDecoration.lineThrough
-                                        : null,
-                                  ),
-                                ),
-                                trailing: Transform.scale(
-                                  scale: 1.5,
-                                  child: Checkbox(
-                                      activeColor: Colors.blue.shade800,
-                                      value: snapshot.data![index].isDone,
-                                      shape: CircleBorder(),
-                                      onChanged: (value) {
-                                        taskRepo.updateTask(
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 20,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ListTile(
+                                  contentPadding: EdgeInsets.zero,
+                                  trailing: IconButton(
+                                    icon: Icon(
+                                      CupertinoIcons.delete,
+                                    ),
+                                    onPressed: () async {
+                                      final shouldDelete =
+                                          await showDeleteDialog(context);
+                                      if (shouldDelete) {
+                                        taskRepo.deleteTask(
                                           userid: widget.userid,
                                           todoid: snapshot.data![index].docID,
-                                          valueUpdate: value,
                                         );
                                         setState(() {});
-                                      }),
-                                ),
-                              ),
-                              Transform.translate(
-                                offset: Offset(0, -12),
-                                child: Container(
-                                  child: Column(
-                                    children: [
-                                      Divider(
-                                        thickness: 1.5,
-                                        color: Colors.grey.shade200,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text(snapshot.data![index].dateTask),
-                                          Gap(12),
-                                          Text(snapshot.data![index].timeTask),
-                                        ],
-                                      ),
-                                    ],
+                                      }
+                                    },
+                                  ),
+                                  title: Text(
+                                    snapshot.data![index].titleTask,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                      decoration: snapshot.data![index].isDone
+                                          ? TextDecoration.lineThrough
+                                          : null,
+                                    ),
+                                  ),
+                                  subtitle: Text(
+                                    snapshot.data![index].description,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                      decoration: snapshot.data![index].isDone
+                                          ? TextDecoration.lineThrough
+                                          : null,
+                                    ),
+                                  ),
+                                  leading: Transform.scale(
+                                    scale: 1.5,
+                                    child: Checkbox(
+                                        activeColor: Colors.blue.shade800,
+                                        value: snapshot.data![index].isDone,
+                                        shape: CircleBorder(),
+                                        onChanged: (value) {
+                                          taskRepo.updateTask(
+                                            userid: widget.userid,
+                                            todoid: snapshot.data![index].docID,
+                                            valueUpdate: value,
+                                          );
+                                          setState(() {});
+                                        }),
                                   ),
                                 ),
-                              ),
-                            ],
+                                Transform.translate(
+                                  offset: Offset(0, -12),
+                                  child: Container(
+                                    child: Column(
+                                      children: [
+                                        Divider(
+                                          thickness: 1.5,
+                                          color: Colors.grey.shade200,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                                snapshot.data![index].dateTask),
+                                            Gap(12),
+                                            Text(
+                                                snapshot.data![index].timeTask),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            );
-          } else if (!snapshot.hasData) {
-            return Center(
-              child: Text("No Data!"),
-            );
-          } else if (snapshot.hasError) {
-            return Center(
-              child: Text(snapshot.error.toString()),
-            );
+                      ],
+                    ),
+                  );
+                },
+              );
+            } else if (!snapshot.hasData) {
+              return Center(
+                child: Text("No Data!"),
+              );
+            } else if (snapshot.hasError) {
+              return Center(
+                child: Text(snapshot.error.toString()),
+              );
+            } else {
+              return Center(
+                child: Text("Something went Wrong"),
+              );
+            }
           } else {
-            return Center(
-              child: Text("Something went Wrong"),
+            return Padding(
+              padding: EdgeInsets.only(
+                top: screenHeight / 2,
+                bottom: screenHeight / 2,
+              ),
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
             );
           }
-        } else {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      }),
+        }),
+      ),
     );
   }
 }
