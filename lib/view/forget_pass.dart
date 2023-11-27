@@ -108,8 +108,10 @@ class _ForgetPassViewState extends State<ForgetPassView> {
                             controller.checkIfEmailInUse(email.text);
                         if (await isEmail) {
                           await authrepo.passwordReset(email.text);
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (c) => const LoginView()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (c) => const LoginView()));
                         } else {
                           Fluttertoast.showToast(msg: "Email is not exists");
                         }

@@ -117,8 +117,8 @@ class _LoginViewState extends State<LoginView> {
                     labelStyle: const TextStyle(color: Colors.black),
                     hintText: "Enter your Password",
                     hintStyle: const TextStyle(color: Colors.grey),
-                    prefixIcon:
-                        const Icon(Icons.lock, color: Colors.grey), // Add prefix icon
+                    prefixIcon: const Icon(Icons.lock,
+                        color: Colors.grey), // Add prefix icon
                     suffixIcon: IconButton(
                       onPressed: () {
                         setState(() {
@@ -226,8 +226,10 @@ class _LoginViewState extends State<LoginView> {
                 Center(
                     child: TextButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (c) => const RegisterView()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (c) => const RegisterView()));
                   },
                   child: const Text(
                     'Not registered yet? Register Here!',
